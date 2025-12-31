@@ -11,56 +11,83 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-md">
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        {/* Logo */}
-        <Link to="/" className="text-xl font-bold text-blue-600">
-          User Management System
-        </Link>
+  <nav className="sticky top-0 z-50 bg-black/60 backdrop-blur-xl border-b border-white/10">
+    <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
-        {/* Right side */}
-        <div className="flex items-center gap-4">
-          {!isAuthenticated && (
-            <>
-              <Link to="/login" className="text-gray-600 hover:text-blue-600">
-                Login
-              </Link>
-              <Link to="/signup" className="text-gray-600 hover:text-blue-600">
-                Signup
-              </Link>
-            </>
-          )}
+      {/* Logo */}
+      <Link
+        to="/"
+        className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"
+      >
+        User Management System
+      </Link>
 
-          {isAuthenticated && (
-            <>
-              <Link to="/" className="text-gray-600 hover:text-blue-600">
-                Dashboard
-              </Link>
+      {/* Right side */}
+      <div className="flex items-center gap-6 text-sm">
 
-              <Link to="/profile" className="text-gray-600 hover:text-blue-600">
-                Profile
-              </Link>
+        {!isAuthenticated && (
+          <>
+            <Link
+              to="/login"
+              className="text-gray-300 hover:text-white transition"
+            >
+              Login
+            </Link>
+            <Link
+              to="/signup"
+              className="px-4 py-2 rounded-md
+              bg-blue-600/80 text-white
+              hover:bg-blue-600 transition"
+            >
+              Signup
+            </Link>
+          </>
+        )}
 
-              {isAdmin() && (
-                <Link to="/admin" className="text-gray-600 hover:text-blue-600">
-                  Admin
-                </Link>
-              )}
+        {isAuthenticated && (
+          <>
+            <Link to="/" className="text-gray-300 hover:text-white transition">
+              Dashboard
+            </Link>
 
-              <span className=" text-gray-500">{user?.fullName}</span>
+            <Link
+              to="/profile"
+              className="text-gray-300 hover:text-white transition"
+            >
+              Profile
+            </Link>
 
-              <button
-                onClick={handleLogout}
-                className="text-red-600 hover:text-red-700 font-medium"
+            {isAdmin() && (
+              <Link
+                to="/admin"
+                className="text-purple-400 hover:text-purple-300 transition"
               >
-                Logout
-              </button>
-            </>
-          )}
-        </div>
+                Admin
+              </Link>
+            )}
+
+            {/* User badge */}
+            <span className="
+              px-3 py-1 rounded-full
+              bg-white/10 border border-white/20
+              text-gray-200 text-xs
+            ">
+              {user?.fullName}
+            </span>
+
+            <button
+              onClick={handleLogout}
+              className="text-red-400 hover:text-red-300 font-medium transition"
+            >
+              Logout
+            </button>
+          </>
+        )}
       </div>
-    </nav>
-  );
+    </div>
+  </nav>
+);
+
 };
 
 export default Navbar;

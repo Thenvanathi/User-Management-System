@@ -69,10 +69,10 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="max-w-7xl mx-auto px-6 py-6 text-white">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
-        <p className="mt-2 text-gray-600">Manage users and system settings</p>
+        <h1 className="text-3xl font-bold text-white">Admin Dashboard</h1>
+<p className="mt-2 text-gray-400">Manage users and system settings</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -88,15 +88,15 @@ const AdminDashboard = () => {
               </div>
               <div className="ml-5 w-0 flex-1">
                 <dl>
-                  <dt className="text-sm font-medium text-gray-500 truncate">Total Users</dt>
-                  <dd className="text-lg font-medium text-gray-900">{stats.total}</dd>
+                  <dt className="text-sm font-medium text-gray-400 truncate">Total Users</dt>
+                  <dd className="text-lg font-medium text-white">{stats.total}</dd>
                 </dl>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="bg-white overflow-hidden shadow rounded-lg">
+        <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl">
           <div className="p-5">
             <div className="flex items-center">
               <div className="flex-shrink-0">
@@ -108,15 +108,15 @@ const AdminDashboard = () => {
               </div>
               <div className="ml-5 w-0 flex-1">
                 <dl>
-                  <dt className="text-sm font-medium text-gray-500 truncate">Active Users</dt>
-                  <dd className="text-lg font-medium text-gray-900">{stats.active}</dd>
+                  <dt className="text-sm font-medium text-gray-400 truncate">Active Users</dt>
+                  <dd className="text-lg font-medium text-white">{stats.active}</dd>
                 </dl>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="bg-white overflow-hidden shadow rounded-lg">
+        <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl">
           <div className="p-5">
             <div className="flex items-center">
               <div className="flex-shrink-0">
@@ -128,15 +128,15 @@ const AdminDashboard = () => {
               </div>
               <div className="ml-5 w-0 flex-1">
                 <dl>
-                  <dt className="text-sm font-medium text-gray-500 truncate">Inactive Users</dt>
-                  <dd className="text-lg font-medium text-gray-900">{stats.inactive}</dd>
+                  <dt className="text-sm font-medium text-gray-400 truncate">Inactive Users</dt>
+                  <dd className="text-lg font-medium text-white">{stats.inactive}</dd>
                 </dl>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="bg-white overflow-hidden shadow rounded-lg">
+        <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl">
           <div className="p-5">
             <div className="flex items-center">
               <div className="flex-shrink-0">
@@ -157,11 +157,11 @@ const AdminDashboard = () => {
         </div>
       </div>
 
-      <div className="bg-white shadow rounded-lg p-6">
+      <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6">
         <div className="flex justify-between items-center mb-6">
           <div>
-            <h2 className="text-xl font-semibold text-gray-900">User Management</h2>
-            <p className="text-gray-600">Manage user accounts and permissions</p>
+            <h2 className="text-xl font-semibold text-white">User Management</h2>
+            <p className="text-gray-400">Manage user accounts and permissions</p>
           </div>
           <div className="text-sm text-gray-500">
             Showing {users.length} of {totalUsers} users

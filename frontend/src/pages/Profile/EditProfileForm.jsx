@@ -44,12 +44,16 @@ const EditProfileForm = ({ user, onSubmit, loading, onCancel }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white shadow rounded-lg p-6">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6">Edit Profile</h2>
+    <form
+  onSubmit={handleSubmit}
+  className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6"
+>
+
+      <h2 className="text-2xl font-bold text-white mb-6">Edit Profile</h2>
 
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-gray-300 mb-1">
             Full Name *
           </label>
           <input
@@ -57,9 +61,9 @@ const EditProfileForm = ({ user, onSubmit, loading, onCancel }) => {
             name="fullName"
             value={formData.fullName}
             onChange={handleChange}
-            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-              errors.fullName ? "border-red-500" : "border-gray-300"
-            }`}
+            className={`w-full px-3 py-2 bg-black/40 text-white border rounded-md
+focus:outline-none focus:ring-2 focus:ring-blue-500
+${errors.fullName ? "border-red-500" : "border-white/20"}`}
           />
           {errors.fullName && (
             <p className="mt-1 text-sm text-red-600">{errors.fullName}</p>
@@ -67,7 +71,7 @@ const EditProfileForm = ({ user, onSubmit, loading, onCancel }) => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-gray-300 mb-1">
             Email Address *
           </label>
           <input
@@ -75,9 +79,9 @@ const EditProfileForm = ({ user, onSubmit, loading, onCancel }) => {
             name="emailId"
             value={formData.emailId}
             onChange={handleChange}
-            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-              errors.emailId ? "border-red-500" : "border-gray-300"
-            }`}
+            className={`w-full px-3 py-2 bg-black/40 text-white border rounded-md
+focus:outline-none focus:ring-2 focus:ring-blue-500
+${errors.fullName ? "border-red-500" : "border-white/20"}`}
           />
           {errors.emailId && (
             <p className="mt-1 text-sm text-red-600">{errors.emailId}</p>
@@ -88,7 +92,7 @@ const EditProfileForm = ({ user, onSubmit, loading, onCancel }) => {
           <button
             type="submit"
             disabled={loading}
-            className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+            className="flex-1 bg-blue-600/80 text-white py-2 px-4 rounded-md hover:bg-blue-600"
           >
             {loading ? "Saving..." : "Save Changes"}
           </button>
@@ -96,7 +100,7 @@ const EditProfileForm = ({ user, onSubmit, loading, onCancel }) => {
           <button
             type="button"
             onClick={onCancel}
-            className="flex-1 bg-gray-200 text-gray-800 py-2 px-4 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500"
+            className="flex-1 bg-white/10 text-gray-300 py-2 px-4 rounded-md hover:bg-white/20"
           >
             Cancel
           </button>

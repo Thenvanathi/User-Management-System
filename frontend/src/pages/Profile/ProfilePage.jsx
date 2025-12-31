@@ -58,79 +58,84 @@ const ProfilePage = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">My Profile</h1>
-        <p className="text-gray-600 mt-2">
-          Manage your account information and settings
-        </p>
+  <div className="max-w-5xl mx-auto space-y-8">
+
+    {/* Header */}
+    <div>
+      <h1 className="text-3xl font-bold text-white">My Profile</h1>
+      <p className="text-gray-400 mt-2">
+        Manage your account information and settings
+      </p>
+    </div>
+
+    {/* Message */}
+    {message.text && (
+      <div
+        className={`p-4 rounded-lg border backdrop-blur-md ${
+          message.type === "success"
+            ? "bg-green-500/10 text-green-300 border-green-500/30"
+            : "bg-red-500/10 text-red-300 border-red-500/30"
+        }`}
+      >
+        {message.text}
+      </div>
+    )}
+
+    {/* Content */}
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div>
+        {isEditing ? (
+          <EditProfileForm
+            user={user}
+            onSubmit={handleUpdateProfile}
+            loading={loading}
+            onCancel={handleCancelEdit}
+          />
+        ) : (
+          <>
+            <ProfileInfo user={user} />
+            <button
+              onClick={() => setIsEditing(true)}
+              className="mt-4 px-6 py-2 rounded-md bg-blue-600/80 text-white hover:bg-blue-600 transition"
+            >
+              Edit Profile
+            </button>
+          </>
+        )}
       </div>
 
-      {message.text && (
-        <div
-          className={`mb-6 p-4 rounded-md ${
-            message.type === "success"
-              ? "bg-green-50 text-green-800 border border-green-200"
-              : "bg-red-50 text-red-800 border border-red-200"
-          }`}
-        >
-          {message.text}
-        </div>
-      )}
+      <div className="space-y-8">
+        <ChangePasswordForm />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div>
-          {isEditing ? (
-            <EditProfileForm
-              user={user}
-              onSubmit={handleUpdateProfile}
-              loading={loading}
-              onCancel={handleCancelEdit}
-            />
-          ) : (
-            <>
-              <ProfileInfo user={user} />
-              <div className="mt-4">
-                <button
-                  onClick={() => setIsEditing(true)}
-                  className="bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                  Edit Profile
-                </button>
-              </div>
-            </>
-          )}
-        </div>
+        {/* Account Actions */}
+        <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6">
+          <h3 className="text-lg font-semibold text-white mb-4">
+            Account Actions
+          </h3>
 
-        <div className="space-y-8">
-          <ChangePasswordForm />
+          <div className="space-y-3">
+            <button
+              onClick={logout}
+              className="w-full bg-red-600/80 text-white py-2 rounded-md hover:bg-red-600"
+            >
+              Logout
+            </button>
 
-          <div className="bg-white shadow rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">
-              Account Actions
-            </h3>
-            <div className="space-y-3">
+            {user.role === "admin" && (
               <button
-                onClick={logout}
-                className="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500"
+                onClick={() => (window.location.href = "/admin")}
+                className="w-full bg-purple-600/80 text-white py-2 rounded-md hover:bg-purple-600"
               >
-                Logout
+                Go to Admin Dashboard
               </button>
-
-              {user.role === "admin" && (
-                <button
-                  onClick={() => (window.location.href = "/admin")}
-                  className="w-full bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                >
-                  Go to Admin Dashboard
-                </button>
-              )}
-            </div>
+            )}
           </div>
         </div>
       </div>
     </div>
-  );
+  </div>
+);
+
 };
 
 export default ProfilePage;

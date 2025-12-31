@@ -31,29 +31,53 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Sign in to your account
-          </h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
-            Or{" "}
-            <Link
-              to="/signup"
-              className="font-medium text-blue-600 hover:text-blue-500"
-            >
-              create a new account
-            </Link>
-          </p>
-        </div>
+  <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-gray-800 px-4">
 
-        <div className="bg-white py-8 px-4 shadow rounded-lg sm:px-10">
-          <LoginForm onSubmit={handleLogin} loading={loading} error={error} />
-        </div>
+    {/* Glass Card */}
+    <div className="
+      relative w-full max-w-md
+      bg-white/10 backdrop-blur-xl
+      border border-white/20
+      rounded-2xl shadow-2xl
+      transform transition duration-500
+      hover:scale-[1.03] hover:rotate-1
+    ">
+
+      {/* Glow effect */}
+      <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur opacity-30"></div>
+
+      {/* Content */}
+      <div className="relative bg-black/60 rounded-2xl px-8 py-10">
+
+        <h2 className="text-center text-3xl font-bold text-white mb-2">
+          Welcome Back
+        </h2>
+
+        <p className="text-center text-sm text-gray-300 mb-6">
+          Sign in to continue
+        </p>
+
+        <LoginForm
+          onSubmit={handleLogin}
+          loading={loading}
+          error={error}
+        />
+
+        <p className="mt-6 text-center text-sm text-gray-400">
+          Don’t have an account?{" "}
+          <Link
+            to="/signup"
+            className="text-blue-400 hover:text-blue-300 font-medium"
+          >
+            Create one
+          </Link>
+        </p>
+
       </div>
     </div>
-  );
+  </div>
+);
+
 };
 
 export default LoginPage;

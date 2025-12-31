@@ -1,72 +1,56 @@
 const ProfileInfo = ({ user }) => {
   return (
-    <div className="bg-white shadow rounded-lg p-6">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6">
+    <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6">
+      <h2 className="text-2xl font-bold text-white mb-6">
         Profile Information
       </h2>
 
-      <div className="space-y-4">
+      <div className="space-y-4 text-gray-300">
+        <Info label="Full Name" value={user.fullName} />
+        <Info label="Email Address" value={user.emailId} />
+
         <div>
-          <label className="block text-sm font-medium text-gray-600">
-            Full Name
-          </label>
-          <p className="mt-1 text-lg text-gray-900">{user.fullName}</p>
+          <label className="text-sm text-gray-400">Role</label>
+          <span
+            className={`ml-2 px-3 py-1 rounded-full text-sm ${
+              user.role === "admin"
+                ? "bg-red-500/20 text-red-300"
+                : "bg-blue-500/20 text-blue-300"
+            }`}
+          >
+            {user.role}
+          </span>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-600">
-            Email Address
-          </label>
-          <p className="mt-1 text-lg text-gray-900">{user.emailId}</p>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-600">
-            Role
-          </label>
-          <p className="mt-1">
-            <span
-              className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${
-                user.role === "admin"
-                  ? "bg-red-100 text-red-800"
-                  : "bg-blue-100 text-blue-800"
-              }`}
-            >
-              {user.role}
-            </span>
-          </p>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-600">
-            Account Status
-          </label>
-          <p className="mt-1">
-            <span
-              className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${
-                user.status === "active"
-                  ? "bg-green-100 text-green-800"
-                  : "bg-gray-100 text-gray-800"
-              }`}
-            >
-              {user.status}
-            </span>
-          </p>
+          <label className="text-sm text-gray-400">Status</label>
+          <span
+            className={`ml-2 px-3 py-1 rounded-full text-sm ${
+              user.status === "active"
+                ? "bg-green-500/20 text-green-300"
+                : "bg-gray-500/20 text-gray-300"
+            }`}
+          >
+            {user.status}
+          </span>
         </div>
 
         {user.lastLogin && (
-          <div>
-            <label className="block text-sm font-medium text-gray-600">
-              Last Login
-            </label>
-            <p className="mt-1 text-gray-900">
-              {new Date(user.lastLogin).toLocaleString()}
-            </p>
-          </div>
+          <Info
+            label="Last Login"
+            value={new Date(user.lastLogin).toLocaleString()}
+          />
         )}
       </div>
     </div>
   );
 };
+
+const Info = ({ label, value }) => (
+  <div>
+    <label className="text-sm text-gray-400">{label}</label>
+    <p className="text-white text-lg">{value}</p>
+  </div>
+);
 
 export default ProfileInfo;
